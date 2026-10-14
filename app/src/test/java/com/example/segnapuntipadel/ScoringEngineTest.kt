@@ -1,0 +1,128 @@
+package com.example.segnapuntipadel
+
+import com.example.segnapuntipadel.domain.model.MatchAction
+import com.example.segnapuntipadel.domain.model.MatchConfig
+import com.example.segnapuntipadel.domain.model.MatchRules
+import com.example.segnapuntipadel.domain.model.MatchState
+import com.example.segnapuntipadel.domain.model.Team
+import com.example.segnapuntipadel.domain.model.TeamSide
+import com.example.segnapuntipadel.domain.scoring.ScoringEngine
+import org.junit.Assert.assertEquals
+import org.junit.Assert.assertFalse
+import org.junit.Assert.assertNull
+import org.junit.Assert.assertTrue
+import org.junit.Test
+
+class ScoringEngineTest {
+    private val engine = ScoringEngine()
+
+    @Test
+    fun repeatedDeuceTurnsIntoKillerPointAtConfiguredLimit() {
+        var state = newState(MatchRules(maxDeuceCycles = 1))
+        state = score(state, TeamSide.A, 3)
+        state = score(state, TeamSide.B, 3)
+
+        state = score(state, TeamSide.A)
+        assertEquals(TeamSide.A, state.gameScore.advantage)
+
+        state = score(state, TeamSide.B)
+        assertTrue(state.gameScore.killerPoint)
+        assertEquals(1, state.gameScore.completedDeuceCycles)
+
+        state = score(state, TeamSide.B)
+        assertEquals(ScoreValue(0, 1), ScoreValue(state.games.a, state.games.b))
+    }
+
+    @Test
+    fun setCanContinuePastSixGamesUntilTwoGameLead() {
+        var state = newState()
+        repeat(5) {
+            state = winGame(state, TeamSide.A)
+            state = winGame(state, TeamSide.B)
+        }
+
+        state = winGame(state, TeamSide.A)
+        assertEquals(6, state.games.a)
+        assertEquals(5, state.games.b)
+        assertTrue(state.completedSets.isEmpty())
+
+        state = winGame(state, TeamSide.A)
+        assertEquals(7, state.completedSets.single().games.a)
+        assertEquals(5, state.completedSets.single().games.b)
+        assertEquals(1, state.setsWon.a)
+    }
+
+    @Test
+    fun reachingConfiguredGameLimitEndsSetEvenWithoutTwoGameLead() {
+        var state = newState(MatchRules(maxGamesPerSet = 10))
+        repeat(9) {
+            state = winGame(state, TeamSide.A)
+            state = winGame(state, TeamSide.B)
+        }
+
+        state = winGame(state, TeamSide.B)
+        assertEquals(9, state.completedSets.single().games.a)
+        assertEquals(10, state.completedSets.single().games.b)
+        assertEquals(TeamSide.B, state.completedSets.single().winner)
+    }
+
+    @Test
+    fun allConfiguredSetsArePlayedBeforeMatchEnds() {
+        val rules = MatchRules(setsToPlay = 3, maxGamesPerSet = 6)
+        var state = newState(rules)
+        state = winSet(state, TeamSide.A)
+        assertFalse(state.isFinished)
+        state = winSet(state, TeamSide.B)
+        assertFalse(state.isFinished)
+        state = winSet(state, TeamSide.B)
+
+        assertTrue(state.isFinished)
+        assertEquals(TeamSide.B, state.winner)
+        assertEquals(3, state.completedSets.size)
+    }
+
+    @Test
+    fun evenSetCountCanFinishInADraw() {
+        val rules = MatchRules(setsToPlay = 2, maxGamesPerSet = 6)
+        var state = newState(rules)
+        state = winSet(state, TeamSide.A)
+        state = winSet(state, TeamSide.B)
+
+        assertTrue(state.isFinished)
+        assertNull(state.winner)
+    }
+
+    private fun newState(rules: MatchRules = MatchRules()): MatchState =
+        MatchState(
+            MatchConfig(
+                teamA = Team("A1", "A2"),
+                teamB = Team("B1", "B2"),
+                rules = rules
+            )
+        )
+
+    private fun score(
+        state: MatchState,
+        side: TeamSide,
+        count: Int = 1
+    ): MatchState {
+        var result = state
+        repeat(count) {
+            result = engine.apply(result, MatchAction.ScorePoint(side))
+        }
+        return result
+    }
+
+    private fun winGame(state: MatchState, side: TeamSide): MatchState =
+        score(state, side, 4)
+
+    private fun winSet(state: MatchState, side: TeamSide): MatchState {
+        var result = state
+        repeat(6) {
+            result = winGame(result, side)
+        }
+        return result
+    }
+
+    private data class ScoreValue(val a: Int, val b: Int)
+}
