@@ -1,11 +1,11 @@
-package com.example.segnapuntipadel.domain.scoring
+package it.pv.segnapuntipadel.domain.scoring
 
-import com.example.segnapuntipadel.domain.model.GameScore
-import com.example.segnapuntipadel.domain.model.MatchAction
-import com.example.segnapuntipadel.domain.model.MatchState
-import com.example.segnapuntipadel.domain.model.Score
-import com.example.segnapuntipadel.domain.model.SetResult
-import com.example.segnapuntipadel.domain.model.TeamSide
+import it.pv.segnapuntipadel.domain.model.GameScore
+import it.pv.segnapuntipadel.domain.model.MatchAction
+import it.pv.segnapuntipadel.domain.model.MatchState
+import it.pv.segnapuntipadel.domain.model.Score
+import it.pv.segnapuntipadel.domain.model.SetResult
+import it.pv.segnapuntipadel.domain.model.TeamSide
 
 class ScoringEngine {
     fun apply(state: MatchState, action: MatchAction): MatchState {

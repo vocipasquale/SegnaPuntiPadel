@@ -1,4 +1,4 @@
-package com.example.segnapuntipadel.presentation.game
+package it.pv.segnapuntipadel.presentation.game
 
 import android.content.Intent
 import android.os.Build
@@ -16,13 +16,13 @@ import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import androidx.lifecycle.ViewModelProvider
-import com.example.segnapuntipadel.R
-import com.example.segnapuntipadel.domain.model.GameScore
-import com.example.segnapuntipadel.domain.model.MatchConfig
-import com.example.segnapuntipadel.domain.model.MatchState
-import com.example.segnapuntipadel.domain.model.Score
-import com.example.segnapuntipadel.domain.model.TeamSide
-import com.example.segnapuntipadel.presentation.setup.SetupActivity
+import it.pv.segnapuntipadel.R
+import it.pv.segnapuntipadel.domain.model.GameScore
+import it.pv.segnapuntipadel.domain.model.MatchConfig
+import it.pv.segnapuntipadel.domain.model.MatchState
+import it.pv.segnapuntipadel.domain.model.Score
+import it.pv.segnapuntipadel.domain.model.TeamSide
+import it.pv.segnapuntipadel.presentation.setup.SetupActivity
 import kotlinx.coroutines.launch
 
 class GameActivity : ComponentActivity() {

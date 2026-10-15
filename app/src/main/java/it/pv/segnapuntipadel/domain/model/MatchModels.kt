@@ -1,4 +1,4 @@
-package com.example.segnapuntipadel.domain.model
+package it.pv.segnapuntipadel.domain.model
 
 import java.io.Serializable
 

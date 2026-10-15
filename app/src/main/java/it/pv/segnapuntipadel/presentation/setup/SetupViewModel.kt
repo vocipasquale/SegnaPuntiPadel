@@ -1,9 +1,9 @@
-package com.example.segnapuntipadel.presentation.setup
+package it.pv.segnapuntipadel.presentation.setup
 
 import androidx.lifecycle.ViewModel
-import com.example.segnapuntipadel.domain.model.MatchConfig
-import com.example.segnapuntipadel.domain.model.MatchRules
-import com.example.segnapuntipadel.domain.model.Team
+import it.pv.segnapuntipadel.domain.model.MatchConfig
+import it.pv.segnapuntipadel.domain.model.MatchRules
+import it.pv.segnapuntipadel.domain.model.Team
 
 class SetupViewModel : ViewModel() {
     private var teamA = Team("", "")

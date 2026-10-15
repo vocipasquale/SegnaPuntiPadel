@@ -1,12 +1,12 @@
-package com.example.segnapuntipadel
+package it.pv.segnapuntipadel
 
-import com.example.segnapuntipadel.domain.model.MatchAction
-import com.example.segnapuntipadel.domain.model.MatchConfig
-import com.example.segnapuntipadel.domain.model.MatchRules
-import com.example.segnapuntipadel.domain.model.MatchState
-import com.example.segnapuntipadel.domain.model.Team
-import com.example.segnapuntipadel.domain.model.TeamSide
-import com.example.segnapuntipadel.domain.scoring.ScoringEngine
+import it.pv.segnapuntipadel.domain.model.MatchAction
+import it.pv.segnapuntipadel.domain.model.MatchConfig
+import it.pv.segnapuntipadel.domain.model.MatchRules
+import it.pv.segnapuntipadel.domain.model.MatchState
+import it.pv.segnapuntipadel.domain.model.Team
+import it.pv.segnapuntipadel.domain.model.TeamSide
+import it.pv.segnapuntipadel.domain.scoring.ScoringEngine
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertFalse
 import org.junit.Assert.assertNull

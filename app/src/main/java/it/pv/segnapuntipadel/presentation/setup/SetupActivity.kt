@@ -1,4 +1,4 @@
-package com.example.segnapuntipadel.presentation.setup
+package it.pv.segnapuntipadel.presentation.setup
 
 import android.content.Intent
 import android.os.Bundle
@@ -9,10 +9,10 @@ import android.widget.EditText
 import android.widget.Toast
 import androidx.activity.ComponentActivity
 import androidx.activity.viewModels
-import com.example.segnapuntipadel.R
-import com.example.segnapuntipadel.domain.model.MatchRules
-import com.example.segnapuntipadel.domain.model.Team
-import com.example.segnapuntipadel.presentation.game.GameActivity
+import it.pv.segnapuntipadel.R
+import it.pv.segnapuntipadel.domain.model.MatchRules
+import it.pv.segnapuntipadel.domain.model.Team
+import it.pv.segnapuntipadel.presentation.game.GameActivity
 
 class SetupActivity : ComponentActivity() {
     private val viewModel: SetupViewModel by viewModels()

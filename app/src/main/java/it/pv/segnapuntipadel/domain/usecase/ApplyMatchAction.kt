@@ -1,8 +1,8 @@
-package com.example.segnapuntipadel.domain.usecase
+package it.pv.segnapuntipadel.domain.usecase
 
-import com.example.segnapuntipadel.domain.model.MatchAction
-import com.example.segnapuntipadel.domain.model.MatchState
-import com.example.segnapuntipadel.domain.scoring.ScoringEngine
+import it.pv.segnapuntipadel.domain.model.MatchAction
+import it.pv.segnapuntipadel.domain.model.MatchState
+import it.pv.segnapuntipadel.domain.scoring.ScoringEngine
 
 class ApplyMatchAction(
     private val scoringEngine: ScoringEngine = ScoringEngine()

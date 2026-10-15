@@ -3,17 +3,17 @@ plugins {
 }
 
 android {
-    namespace = "com.example.segnapuntipadel"
+    namespace = "it.pv.segnapuntipadel"
     compileSdk {
-        version = release(37)
+        version = release(36)
     }
 
     defaultConfig {
-        applicationId = "com.example.segnapuntipadel"
+        applicationId = "it.pv.segnapuntipadel"
         minSdk = 24
-        targetSdk = 37
-        versionCode = 1
-        versionName = "1.0"
+        targetSdk = 36
+        versionCode = 5
+        versionName = "5.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -22,7 +22,7 @@ android {
         release {
             optimization {
                 enable = true
-                packageScope = setOf("androidx.**", "kotlin.**", "kotlinx.**")
+                packageScope = setOf("androidx.**", "kotlinx.**")
             }
         }
     }

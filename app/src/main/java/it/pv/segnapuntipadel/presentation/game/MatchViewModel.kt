@@ -1,14 +1,14 @@
-package com.example.segnapuntipadel.presentation.game
+package it.pv.segnapuntipadel.presentation.game
 
 import android.os.SystemClock
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
-import com.example.segnapuntipadel.domain.model.MatchAction
-import com.example.segnapuntipadel.domain.model.MatchConfig
-import com.example.segnapuntipadel.domain.model.MatchState
-import com.example.segnapuntipadel.domain.model.TeamSide
-import com.example.segnapuntipadel.domain.usecase.ApplyMatchAction
+import it.pv.segnapuntipadel.domain.model.MatchAction
+import it.pv.segnapuntipadel.domain.model.MatchConfig
+import it.pv.segnapuntipadel.domain.model.MatchState
+import it.pv.segnapuntipadel.domain.model.TeamSide
+import it.pv.segnapuntipadel.domain.usecase.ApplyMatchAction
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.MutableStateFlow
