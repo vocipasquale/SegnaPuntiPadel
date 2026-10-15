@@ -1,5 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <style name="Theme.SegnaPuntiPadel" parent="android:Theme.Material.Light.NoActionBar" />
+    <style name="Theme.SegnaPuntiPadel" parent="android:Theme.Material.Light.NoActionBar">
+        <item name="android:colorAccent">@color/score_led_a</item>
+        <item name="android:colorButtonNormal">@color/score_panel_alt</item>
+        <item name="android:textColorPrimary">@color/score_text</item>
+        <item name="android:textColorSecondary">@color/score_text_muted</item>
+        <item name="android:windowBackground">@color/score_background</item>
+        <item name="android:statusBarColor">@color/score_background</item>
+        <item name="android:navigationBarColor">@color/score_background</item>
+        <item name="android:windowLightStatusBar">false</item>
+    </style>
+
+    <style name="ScoreboardDigits">
+        <item name="android:fontFamily">monospace</item>
+        <item name="android:includeFontPadding">false</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="ScoreboardLabel">
+        <item name="android:fontFamily">sans-serif-condensed</item>
+    </style>
 </resources>

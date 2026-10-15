@@ -2,7 +2,7 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#F5F7F6">
+    android:background="@color/score_background">
 
     <ScrollView
         android:layout_width="match_parent"
@@ -21,8 +21,9 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="12dp"
                 android:text="@string/setup_title"
-                android:textColor="#173D32"
+                android:textColor="@color/score_text"
                 android:textSize="26sp"
+                style="@style/ScoreboardLabel"
                 android:textStyle="bold" />
 
             <LinearLayout
@@ -31,13 +32,13 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="8dp"
-                    android:text="@string/teams_title"
-                    android:textSize="18sp"
-                    android:textStyle="bold" />
+<!--                <TextView-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_marginBottom="8dp"-->
+<!--                    android:text="@string/teams_title"-->
+<!--                    android:textSize="18sp"-->
+<!--                    android:textStyle="bold" />-->
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -49,12 +50,16 @@
                         android:layout_height="wrap_content"
                         android:layout_marginEnd="10dp"
                         android:layout_weight="1"
+                        android:background="@drawable/score_panel_a"
                         android:orientation="vertical">
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="@string/team_a"
+                            android:textColor="@color/score_led_a"
+                            android:textSize="18sp"
+                            style="@style/ScoreboardLabel"
                             android:textStyle="bold" />
 
                         <EditText
@@ -63,7 +68,10 @@
                             android:layout_height="wrap_content"
                             android:hint="@string/player_a1"
                             android:inputType="textPersonName"
-                            android:maxLines="1" />
+                            android:maxLines="1"
+                            android:textColor="@color/score_text"
+                            android:textColorHint="@color/score_text_muted"
+                            android:backgroundTint="@color/score_led_a" />
 
                         <EditText
                             android:id="@+id/player_a2"
@@ -71,7 +79,10 @@
                             android:layout_height="wrap_content"
                             android:hint="@string/player_a2"
                             android:inputType="textPersonName"
-                            android:maxLines="1" />
+                            android:maxLines="1"
+                            android:textColor="@color/score_text"
+                            android:textColorHint="@color/score_text_muted"
+                            android:backgroundTint="@color/score_led_a" />
                     </LinearLayout>
 
                     <LinearLayout
@@ -79,12 +90,16 @@
                         android:layout_height="wrap_content"
                         android:layout_marginStart="10dp"
                         android:layout_weight="1"
+                        android:background="@drawable/score_panel_b"
                         android:orientation="vertical">
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="@string/team_b"
+                            android:textColor="@color/score_led_b"
+                            android:textSize="18sp"
+                            style="@style/ScoreboardLabel"
                             android:textStyle="bold" />
 
                         <EditText
@@ -93,7 +108,10 @@
                             android:layout_height="wrap_content"
                             android:hint="@string/player_b1"
                             android:inputType="textPersonName"
-                            android:maxLines="1" />
+                            android:maxLines="1"
+                            android:textColor="@color/score_text"
+                            android:textColorHint="@color/score_text_muted"
+                            android:backgroundTint="@color/score_led_b" />
 
                         <EditText
                             android:id="@+id/player_b2"
@@ -101,7 +119,10 @@
                             android:layout_height="wrap_content"
                             android:hint="@string/player_b2"
                             android:inputType="textPersonName"
-                            android:maxLines="1" />
+                            android:maxLines="1"
+                            android:textColor="@color/score_text"
+                            android:textColorHint="@color/score_text_muted"
+                            android:backgroundTint="@color/score_led_b" />
                     </LinearLayout>
                 </LinearLayout>
 
@@ -110,6 +131,9 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="12dp"
+                    android:backgroundTint="@color/score_led_a"
+                    android:textColor="@color/score_button_text"
+                    style="@style/ScoreboardLabel"
                     android:text="@string/avanti" />
             </LinearLayout>
 
@@ -117,16 +141,18 @@
                 android:id="@+id/rules_setup_panel"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:background="@color/score_panel"
                 android:orientation="vertical"
+                android:padding="12dp"
                 android:visibility="gone">
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="8dp"
-                    android:text="@string/match_rules_title"
-                    android:textSize="18sp"
-                    android:textStyle="bold" />
+<!--                <TextView-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_marginBottom="8dp"-->
+<!--                    android:text="@string/match_rules_title"-->
+<!--                    android:textSize="18sp"-->
+<!--                    android:textStyle="bold" />-->
 
                 <EditText
                     android:id="@+id/sets_to_play"
@@ -135,6 +161,9 @@
                     android:hint="@string/sets_to_play"
                     android:inputType="number"
                     android:maxLines="1"
+                    android:textColor="@color/score_text"
+                    android:textColorHint="@color/score_text_muted"
+                    android:backgroundTint="@color/score_led_a"
                     android:text="3" />
 
                 <EditText
@@ -144,6 +173,9 @@
                     android:hint="@string/max_games_per_set"
                     android:inputType="number"
                     android:maxLines="1"
+                    android:textColor="@color/score_text"
+                    android:textColorHint="@color/score_text_muted"
+                    android:backgroundTint="@color/score_led_a"
                     android:text="10" />
 
                 <EditText
@@ -153,6 +185,9 @@
                     android:hint="@string/max_deuce_cycles"
                     android:inputType="number"
                     android:maxLines="1"
+                    android:textColor="@color/score_text"
+                    android:textColorHint="@color/score_text_muted"
+                    android:backgroundTint="@color/score_led_a"
                     android:text="1" />
 
                 <LinearLayout
@@ -166,6 +201,9 @@
                         android:layout_height="wrap_content"
                         android:layout_marginEnd="8dp"
                         android:layout_weight="1"
+                        android:backgroundTint="@color/score_panel_alt"
+                        android:textColor="@color/score_text"
+                        style="@style/ScoreboardLabel"
                         android:text="@string/back" />
 
                     <Button
@@ -174,6 +212,9 @@
                         android:layout_height="wrap_content"
                         android:layout_marginStart="8dp"
                         android:layout_weight="1"
+                        android:backgroundTint="@color/score_led_a"
+                        android:textColor="@color/score_button_text"
+                        style="@style/ScoreboardLabel"
                         android:text="@string/start_match" />
                 </LinearLayout>
             </LinearLayout>

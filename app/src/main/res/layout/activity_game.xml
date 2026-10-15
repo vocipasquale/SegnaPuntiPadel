@@ -2,7 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#F5F7F6"
+    android:background="@color/score_background"
     android:gravity="center"
     android:orientation="vertical"
     android:padding="12dp">
@@ -13,34 +13,35 @@
         android:gravity="center_vertical"
         android:orientation="horizontal">
 
-        <TextView
-            android:id="@+id/set_number"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:textColor="#173D32"
-            android:textSize="18sp"
-            android:textStyle="bold" />
+<!--        <TextView-->
+<!--            android:id="@+id/set_number"-->
+<!--            android:layout_width="0dp"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_weight="1"-->
+<!--            android:textColor="@color/score_text_muted"-->
+<!--            android:textSize="18sp"-->
+<!--            android:textStyle="bold" />-->
 
         <TextView
             android:id="@+id/match_timer"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            style="@style/ScoreboardDigits"
             android:text="00:00"
-            android:textColor="#173D32"
-            android:textSize="20sp"
-            android:textStyle="bold" />
+            android:textColor="@color/score_led_b"
+            android:textSize="22sp" />
     </LinearLayout>
 
-    <TextView
-        android:id="@+id/sets_score"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:paddingTop="4dp"
-        android:paddingBottom="4dp"
-        android:textSize="16sp"
-        android:textStyle="bold" />
+<!--    <TextView-->
+<!--        android:id="@+id/sets_score"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:gravity="center"-->
+<!--        android:paddingTop="4dp"-->
+<!--        android:paddingBottom="4dp"-->
+<!--        android:textColor="@color/score_text_muted"-->
+<!--        android:textSize="16sp"-->
+<!--        android:textStyle="bold" />-->
 
     <TextView
         android:id="@+id/set_history"
@@ -48,7 +49,9 @@
         android:layout_height="wrap_content"
         android:gravity="center"
         android:maxLines="1"
-        android:textSize="14sp" />
+        android:textColor="@color/score_led_b"
+        android:textSize="16sp"
+        style="@style/ScoreboardDigits" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -63,7 +66,7 @@
             android:layout_height="match_parent"
             android:layout_marginEnd="6dp"
             android:layout_weight="1"
-            android:background="#E2EEE9"
+            android:background="@drawable/score_panel_a"
             android:gravity="center"
             android:orientation="vertical"
             android:padding="8dp">
@@ -74,8 +77,9 @@
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:maxLines="1"
-                android:textColor="#173D32"
-                android:textSize="18sp"
+                android:textColor="@color/score_led_a"
+                android:textSize="19sp"
+                style="@style/ScoreboardLabel"
                 android:textStyle="bold" />
 
             <TextView
@@ -84,24 +88,21 @@
                 android:layout_height="0dp"
                 android:layout_weight="1"
                 android:gravity="center"
-                android:textColor="#173D32"
-                android:textSize="44sp"
-                android:textStyle="bold" />
+                style="@style/ScoreboardDigits"
+                android:textColor="@color/score_led_a"
+                android:textSize="48sp"
+                android:clickable="true"
+                android:focusable="true"
+                android:foreground="?android:attr/selectableItemBackground" />
 
-            <TextView
-                android:id="@+id/team_a_games"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:textSize="16sp" />
+<!--            <TextView-->
+<!--                android:id="@+id/team_a_games"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:gravity="center"-->
+<!--                android:textColor="@color/score_text_muted"-->
+<!--                android:textSize="16sp" />-->
 
-            <Button
-                android:id="@+id/point_team_a"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:minHeight="104dp"
-                android:text=""
-                android:autoSizeTextType="uniform"/>
         </LinearLayout>
 
         <LinearLayout
@@ -109,7 +110,7 @@
             android:layout_height="match_parent"
             android:layout_marginStart="6dp"
             android:layout_weight="1"
-            android:background="#E2EEE9"
+            android:background="@drawable/score_panel_b"
             android:gravity="center"
             android:orientation="vertical"
             android:padding="8dp">
@@ -120,8 +121,9 @@
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:maxLines="1"
-                android:textColor="#173D32"
-                android:textSize="18sp"
+                android:textColor="@color/score_led_b"
+                android:textSize="19sp"
+                style="@style/ScoreboardLabel"
                 android:textStyle="bold" />
 
             <TextView
@@ -130,24 +132,21 @@
                 android:layout_height="0dp"
                 android:layout_weight="1"
                 android:gravity="center"
-                android:textColor="#173D32"
-                android:textSize="44sp"
-                android:textStyle="bold" />
+                style="@style/ScoreboardDigits"
+                android:textColor="@color/score_led_b"
+                android:textSize="48sp"
+                android:clickable="true"
+                android:focusable="true"
+                android:foreground="?android:attr/selectableItemBackground" />
 
-            <TextView
-                android:id="@+id/team_b_games"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:textSize="16sp" />
+<!--            <TextView-->
+<!--                android:id="@+id/team_b_games"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:gravity="center"-->
+<!--                android:textColor="@color/score_text_muted"-->
+<!--                android:textSize="16sp" />-->
 
-            <Button
-                android:id="@+id/point_team_b"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:minHeight="104dp"
-                android:text=""
-                android:autoSizeTextType="uniform"/>
         </LinearLayout>
     </LinearLayout>
 </LinearLayout>

@@ -8,7 +8,6 @@ import android.view.Gravity
 import android.view.WindowManager
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.ComponentActivity
@@ -33,9 +32,7 @@ class GameActivity : ComponentActivity() {
     private lateinit var teamBPoints: TextView
 //    private lateinit var teamAGames: TextView
 //    private lateinit var teamBGames: TextView
-    private lateinit var pointTeamA: Button
-    private lateinit var pointTeamB: Button
-    private lateinit var setNumber: TextView
+//    private lateinit var setNumber: TextView
     //private lateinit var setsScore: TextView
     private lateinit var timer: TextView
     private lateinit var setHistory: TextView
@@ -68,12 +65,9 @@ class GameActivity : ComponentActivity() {
         teamBPoints = findViewById(R.id.team_b_points)
 //        teamAGames = findViewById(R.id.team_a_games)
 //        teamBGames = findViewById(R.id.team_b_games)
-        pointTeamA = findViewById(R.id.point_team_a)
-        pointTeamB = findViewById(R.id.point_team_b)
-        setNumber = findViewById(R.id.set_number)
-        setNumber.visibility = View.GONE
-        //setsScore = findViewById(R.id.sets_score)
-        findViewById<TextView>(R.id.sets_score).visibility = View.GONE
+//        setNumber = findViewById(R.id.set_number)
+//        setNumber.visibility = View.GONE
+//        findViewById<TextView>(R.id.sets_score).visibility = View.GONE
         timer = findViewById(R.id.match_timer)
         timer.gravity = Gravity.CENTER
         timer.layoutParams = timer.layoutParams.apply {
@@ -94,13 +88,9 @@ class GameActivity : ComponentActivity() {
     private fun bindActions(config: MatchConfig) {
         teamAName.text = config.teamA.displayName()
         teamBName.text = config.teamB.displayName()
-       // pointTeamA.text = getString(R.string.score_point, getString(R.string.team_a))
-        pointTeamA.text = getString(R.string.score_point)
-       // pointTeamB.text = getString(R.string.score_point, getString(R.string.team_b))
-        pointTeamB.text = getString(R.string.score_point)
 
-        pointTeamA.setOnClickListener { viewModel.scorePoint(TeamSide.A) }
-        pointTeamB.setOnClickListener { viewModel.scorePoint(TeamSide.B) }
+        teamAPoints.setOnClickListener { viewModel.scorePoint(TeamSide.A) }
+        teamBPoints.setOnClickListener { viewModel.scorePoint(TeamSide.B) }
 
         teamAPoints.setOnLongClickListener {
             showCorrectionResult(TeamSide.A)
@@ -147,11 +137,6 @@ class GameActivity : ComponentActivity() {
     }
 
     private fun render(match: MatchState, elapsedSeconds: Long, config: MatchConfig) {
-        setNumber.text = getString(
-            R.string.set_label,
-            match.currentSetNumber.coerceAtMost(config.rules.setsToPlay),
-            config.rules.setsToPlay
-        )
         //setsScore.text = getString(
         //    R.string.match_score,
         //    match.setsWon.a,
@@ -182,10 +167,10 @@ class GameActivity : ComponentActivity() {
                 index == match.completedSets.size && !match.isFinished -> match.games
                 else -> Score()
             }
-        }.joinToString(" ° ") { "${it.a}-${it.b}" }
+        }.joinToString("  ") { "${it.a}-${it.b}" }
 
-        pointTeamA.isEnabled = !match.isFinished
-        pointTeamB.isEnabled = !match.isFinished
+        teamAPoints.isEnabled = !match.isFinished
+        teamBPoints.isEnabled = !match.isFinished
     }
 
     private fun formatGameScore(
