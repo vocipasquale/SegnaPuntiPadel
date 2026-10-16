@@ -4,6 +4,7 @@ import it.pv.segnapuntipadel.domain.model.MatchAction
 import it.pv.segnapuntipadel.domain.model.MatchConfig
 import it.pv.segnapuntipadel.domain.model.MatchRules
 import it.pv.segnapuntipadel.domain.model.MatchState
+import it.pv.segnapuntipadel.domain.model.Score
 import it.pv.segnapuntipadel.domain.model.Team
 import it.pv.segnapuntipadel.domain.model.TeamSide
 import it.pv.segnapuntipadel.domain.scoring.ScoringEngine
@@ -31,6 +32,28 @@ class ScoringEngineTest {
 
         state = score(state, TeamSide.B)
         assertEquals(ScoreValue(0, 1), ScoreValue(state.games.a, state.games.b))
+    }
+
+    @Test
+    fun firstScoreInputSelectsServingTeamWithoutAwardingPoint() {
+        val state = engine.apply(unstartedState(), MatchAction.ScorePoint(TeamSide.B))
+
+        assertEquals(TeamSide.B, state.servingSide)
+        assertEquals(Score(), state.gameScore.points)
+        assertNull(state.gameScore.advantage)
+    }
+
+    @Test
+    fun servingTeamAlternatesAfterEveryGame() {
+        var state = winGame(newState(), TeamSide.A)
+
+        assertEquals(1, state.games.a)
+        assertEquals(TeamSide.B, state.servingSide)
+
+        state = winGame(state, TeamSide.B)
+
+        assertEquals(1, state.games.b)
+        assertEquals(TeamSide.A, state.servingSide)
     }
 
     @Test
@@ -92,7 +115,7 @@ class ScoringEngineTest {
         assertNull(state.winner)
     }
 
-    private fun newState(rules: MatchRules = MatchRules()): MatchState =
+    private fun unstartedState(rules: MatchRules = MatchRules()): MatchState =
         MatchState(
             MatchConfig(
                 teamA = Team("A1", "A2"),
@@ -100,6 +123,9 @@ class ScoringEngineTest {
                 rules = rules
             )
         )
+
+    private fun newState(rules: MatchRules = MatchRules()): MatchState =
+        engine.apply(unstartedState(rules), MatchAction.ScorePoint(TeamSide.A))
 
     private fun score(
         state: MatchState,

@@ -26,6 +26,7 @@ data class GameUiState(
 )
 
 sealed class MatchEvent {
+    object PointScored : MatchEvent()
     data class SetCompleted(val setNumber: Int, val winner: TeamSide) : MatchEvent()
     data class MatchCompleted(val winner: TeamSide?) : MatchEvent()
 }
@@ -36,7 +37,12 @@ class MatchViewModel(
 ) : ViewModel() {
     private val initialState = MatchState(config)
     private var startedAtElapsedRealtime = SystemClock.elapsedRealtime()
-    private val actions = mutableListOf<MatchAction>()
+    private data class RecordedAction(
+        val action: MatchAction,
+        val scoresPoint: Boolean
+    )
+
+    private val actions = mutableListOf<RecordedAction>()
     private val _uiState = MutableStateFlow(GameUiState(initialState, 0))
     val uiState: StateFlow<GameUiState> = _uiState.asStateFlow()
 
@@ -59,7 +65,7 @@ class MatchViewModel(
         val updated = applyMatchAction.execute(previous, action)
         if (updated == previous) return
 
-        actions += action
+        actions += RecordedAction(action, previous.servingSide != null)
         _uiState.update { it.copy(match = updated) }
 
         if (updated.completedSets.size > previous.completedSets.size) {
@@ -71,17 +77,20 @@ class MatchViewModel(
                     MatchEvent.SetCompleted(updated.completedSets.size, completed.winner)
                 )
             }
+        } else {
+            _events.tryEmit(MatchEvent.PointScored)
         }
     }
 
     fun correctLastPoint(side: TeamSide): Boolean {
         val actionIndex = actions.indexOfLast {
-            it is MatchAction.ScorePoint && it.side == side
+            val action = it.action
+            it.scoresPoint && action is MatchAction.ScorePoint && action.side == side
         }
         if (actionIndex < 0) return false
 
         actions.removeAt(actionIndex)
-        val corrected = applyMatchAction.replay(initialState, actions)
+        val corrected = applyMatchAction.replay(initialState, actions.map { it.action })
         _uiState.update { it.copy(match = corrected) }
         return true
     }

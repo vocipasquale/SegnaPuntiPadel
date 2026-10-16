@@ -15,5 +15,6 @@
     <color name="score_text_muted">#9BA8AE</color>
     <color name="score_led_a">#44D93F</color>
     <color name="score_led_b">#FC4130</color>
+    <color name="yellow_led">#f0fc08</color>
     <color name="score_button_text">#10150A</color>
 </resources>

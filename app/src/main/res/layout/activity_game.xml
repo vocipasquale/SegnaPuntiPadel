@@ -28,8 +28,8 @@
             android:layout_height="wrap_content"
             style="@style/ScoreboardDigits"
             android:text="00:00"
-            android:textColor="@color/score_led_b"
-            android:textSize="22sp" />
+            android:textColor="@color/yellow_led"
+            android:textSize="44sp" />
     </LinearLayout>
 
 <!--    <TextView-->
@@ -50,7 +50,7 @@
         android:gravity="center"
         android:maxLines="1"
         android:textColor="@color/score_led_b"
-        android:textSize="16sp"
+        android:textSize="24sp"
         style="@style/ScoreboardDigits" />
 
     <LinearLayout
@@ -78,7 +78,7 @@
                 android:gravity="center"
                 android:maxLines="1"
                 android:textColor="@color/score_led_a"
-                android:textSize="19sp"
+                android:textSize="24sp"
                 style="@style/ScoreboardLabel"
                 android:textStyle="bold" />
 
@@ -90,10 +90,17 @@
                 android:gravity="center"
                 style="@style/ScoreboardDigits"
                 android:textColor="@color/score_led_a"
-                android:textSize="48sp"
+                android:textSize="120sp"
                 android:clickable="true"
                 android:focusable="true"
                 android:foreground="?android:attr/selectableItemBackground" />
+
+            <View
+                android:id="@+id/team_a_serving_indicator"
+                android:layout_width="match_parent"
+                android:layout_height="25dp"
+                android:background="@color/score_led_a"
+                android:visibility="invisible" />
 
 <!--            <TextView-->
 <!--                android:id="@+id/team_a_games"-->
@@ -122,7 +129,7 @@
                 android:gravity="center"
                 android:maxLines="1"
                 android:textColor="@color/score_led_b"
-                android:textSize="19sp"
+                android:textSize="24sp"
                 style="@style/ScoreboardLabel"
                 android:textStyle="bold" />
 
@@ -134,10 +141,17 @@
                 android:gravity="center"
                 style="@style/ScoreboardDigits"
                 android:textColor="@color/score_led_b"
-                android:textSize="48sp"
+                android:textSize="120sp"
                 android:clickable="true"
                 android:focusable="true"
                 android:foreground="?android:attr/selectableItemBackground" />
+
+            <View
+                android:id="@+id/team_b_serving_indicator"
+                android:layout_width="match_parent"
+                android:layout_height="25dp"
+                android:background="@color/score_led_b"
+                android:visibility="invisible" />
 
 <!--            <TextView-->
 <!--                android:id="@+id/team_b_games"-->

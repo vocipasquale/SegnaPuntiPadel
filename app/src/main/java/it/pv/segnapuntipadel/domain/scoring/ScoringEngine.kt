@@ -17,6 +17,10 @@ class ScoringEngine {
     }
 
     private fun scorePoint(state: MatchState, side: TeamSide): MatchState {
+        if (state.servingSide == null) {
+            return state.copy(servingSide = side)
+        }
+
         val gameScore = state.gameScore
 
         if (gameScore.killerPoint) {
@@ -57,7 +61,11 @@ class ScoringEngine {
     private fun awardGame(state: MatchState, side: TeamSide): MatchState {
         val games = state.games.increment(side)
         if (!isSetComplete(games, state.config.rules.maxGamesPerSet)) {
-            return state.copy(games = games, gameScore = GameScore())
+            return state.copy(
+                games = games,
+                gameScore = GameScore(),
+                servingSide = state.servingSide?.other()
+            )
         }
 
         val setWinner = if (games.a > games.b) TeamSide.A else TeamSide.B
@@ -79,6 +87,7 @@ class ScoringEngine {
             games = Score(),
             setsWon = setsWon,
             gameScore = GameScore(),
+            servingSide = state.servingSide?.other(),
             completedSets = completedSets,
             isFinished = isFinished,
             winner = winner

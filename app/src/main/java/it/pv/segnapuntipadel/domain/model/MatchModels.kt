@@ -73,6 +73,7 @@ data class MatchState(
     val games: Score = Score(),
     val setsWon: Score = Score(),
     val gameScore: GameScore = GameScore(),
+    val servingSide: TeamSide? = null,
     val completedSets: List<SetResult> = emptyList(),
     val isFinished: Boolean = false,
     val winner: TeamSide? = null
