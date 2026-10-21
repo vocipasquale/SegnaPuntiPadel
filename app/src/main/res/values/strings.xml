@@ -27,9 +27,9 @@
     <!-- <string name="score_point">Punto %1$s</string>-->
     <string name="score_point">+</string>
 <!--    <string name="games_for_team">Game vinti: %1$d</string>-->
-    <string name="advantage_team">Vantaggio %1$s</string>
+<!--    <string name="advantage_team">Vantaggio %1$s</string>-->
     <string name="deuce_count">Parità raggiunte: %1$d</string>
-    <string name="killer_point">Killer point</string>
+    <string name="killer_point">k</string>
     <string name="set_history_title">Set completati</string>
     <string name="set_result">Set %1$d: %2$d - %3$d</string>
     <string name="set_won">Set %1$d vinto da %2$s</string>

@@ -244,9 +244,10 @@ class GameActivity : ComponentActivity() {
         if (gameScore.killerPoint) return getString(R.string.killer_point)
         if (gameScore.advantage != null) {
             return if (gameScore.advantage == side) {
-                getString(R.string.advantage_team, getString(teamNameResource(side)))
+                //getString(R.string.advantage_team, getString(teamNameResource(side)))
+                "1"
             } else {
-                "40"
+                "0"
             }
         }
         if (gameScore.completedDeuceCycles > 0) {

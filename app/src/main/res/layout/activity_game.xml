@@ -90,7 +90,7 @@
                 android:gravity="center"
                 style="@style/ScoreboardDigits"
                 android:textColor="@color/score_led_a"
-                android:textSize="120sp"
+                android:textSize="240sp"
                 android:clickable="true"
                 android:focusable="true"
                 android:foreground="?android:attr/selectableItemBackground" />
@@ -141,7 +141,7 @@
                 android:gravity="center"
                 style="@style/ScoreboardDigits"
                 android:textColor="@color/score_led_b"
-                android:textSize="120sp"
+                android:textSize="240sp"
                 android:clickable="true"
                 android:focusable="true"
                 android:foreground="?android:attr/selectableItemBackground" />
