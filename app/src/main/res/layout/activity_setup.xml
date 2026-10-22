@@ -218,6 +218,16 @@
                         android:text="@string/start_match" />
                 </LinearLayout>
             </LinearLayout>
+
+            <Button
+                android:id="@+id/open_remote_test"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:backgroundTint="@color/score_panel_alt"
+                android:textColor="@color/score_text"
+                style="@style/ScoreboardLabel"
+                android:text="@string/remote_test_open" />
         </LinearLayout>
     </ScrollView>
 </FrameLayout>

@@ -1,5 +1,6 @@
 package it.pv.segnapuntipadel.presentation.game
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.media.AudioManager
 import android.media.ToneGenerator
@@ -8,10 +9,9 @@ import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
 import android.app.AlertDialog
-import android.view.Gravity
+import android.view.KeyEvent
 import android.view.WindowManager
 import android.view.View
-import android.view.ViewGroup
 import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.ComponentActivity
@@ -25,6 +25,9 @@ import it.pv.segnapuntipadel.domain.model.MatchConfig
 import it.pv.segnapuntipadel.domain.model.MatchState
 import it.pv.segnapuntipadel.domain.model.Score
 import it.pv.segnapuntipadel.domain.model.TeamSide
+import it.pv.segnapuntipadel.domain.remote.RemoteKeyDecision
+import it.pv.segnapuntipadel.domain.remote.RemoteKeyMapper
+import it.pv.segnapuntipadel.presentation.remote.ExternalInputDevice
 import it.pv.segnapuntipadel.presentation.setup.SetupActivity
 import kotlinx.coroutines.launch
 import java.util.ArrayDeque
@@ -98,10 +101,6 @@ class GameActivity : ComponentActivity() {
 //        setNumber.visibility = View.GONE
 //        findViewById<TextView>(R.id.sets_score).visibility = View.GONE
         timer = findViewById(R.id.match_timer)
-        timer.gravity = Gravity.CENTER
-        timer.layoutParams = timer.layoutParams.apply {
-            width = ViewGroup.LayoutParams.MATCH_PARENT
-        }
         setHistory = findViewById(R.id.set_history)
         setHistory.visibility = View.VISIBLE
     }
@@ -170,6 +169,29 @@ class GameActivity : ComponentActivity() {
                     }
                 }
             }
+        }
+    }
+
+    // Telecomando Bluetooth: un punto per pressione, ripetizioni ignorate; i tasti volume
+    // del telefono non sono intercettati. RestrictedApi è un falso positivo su
+    // ComponentActivity.dispatchKeyEvent (metodo pubblico di Activity).
+    @SuppressLint("RestrictedApi")
+    override fun dispatchKeyEvent(event: KeyEvent): Boolean {
+        if (!::viewModel.isInitialized) return super.dispatchKeyEvent(event)
+
+        val decision = RemoteKeyMapper.decide(
+            keyCode = event.keyCode,
+            action = event.action,
+            repeatCount = event.repeatCount,
+            fromExternalDevice = ExternalInputDevice.isExternal(event)
+        )
+        return when (decision) {
+            is RemoteKeyDecision.ScorePoint -> {
+                viewModel.scorePoint(decision.side)
+                true
+            }
+            RemoteKeyDecision.Ignore -> true
+            RemoteKeyDecision.PassThrough -> super.dispatchKeyEvent(event)
         }
     }
 

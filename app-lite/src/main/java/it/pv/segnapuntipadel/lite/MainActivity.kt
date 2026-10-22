@@ -12,6 +12,7 @@ import android.text.SpannableStringBuilder
 import android.text.Spanned
 import android.text.style.ForegroundColorSpan
 import android.util.Log
+import android.view.KeyEvent
 import android.view.View
 import android.view.WindowManager
 import android.widget.Button
@@ -23,6 +24,8 @@ import it.pv.segnapuntipadel.domain.model.MatchConfig
 import it.pv.segnapuntipadel.domain.model.MatchRules
 import it.pv.segnapuntipadel.domain.model.Team
 import it.pv.segnapuntipadel.domain.model.TeamSide
+import it.pv.segnapuntipadel.domain.remote.RemoteKeyDecision
+import it.pv.segnapuntipadel.domain.remote.RemoteKeyMapper
 import it.pv.segnapuntipadel.lite.session.CorrectionOutcome
 import it.pv.segnapuntipadel.lite.session.LiteMatchSession
 import it.pv.segnapuntipadel.lite.session.RulesValidation
@@ -150,6 +153,27 @@ class MainActivity : Activity() {
             requestLeaveScoreboard()
         } else {
             super.onBackPressed()
+        }
+    }
+
+    // Telecomando Bluetooth sul tabellone: un punto per pressione, ripetizioni ignorate;
+    // i tasti volume del dispositivo non sono intercettati.
+    override fun dispatchKeyEvent(event: KeyEvent): Boolean {
+        if (screen != Screen.SCOREBOARD || session == null) return super.dispatchKeyEvent(event)
+
+        val decision = RemoteKeyMapper.decide(
+            event.keyCode,
+            event.action,
+            event.repeatCount,
+            ExternalInputDevice.isExternal(event)
+        )
+        return when (decision) {
+            is RemoteKeyDecision.ScorePoint -> {
+                onScoreTap(decision.side)
+                true
+            }
+            RemoteKeyDecision.Ignore -> true
+            RemoteKeyDecision.PassThrough -> super.dispatchKeyEvent(event)
         }
     }
 

@@ -39,4 +39,25 @@
     <string name="exit">Esci</string>
     <string name="point_corrected">Ultimo punto di %1$s corretto.</string>
     <string name="no_point_to_correct">Non ci sono punti di %1$s da correggere.</string>
+    <string name="remote_test_open">Test telecomando</string>
+    <string name="remote_test_title">Test telecomando</string>
+    <string name="remote_test_clear">Pulisci</string>
+    <string name="remote_test_instructions">Premi brevemente ogni tasto del telecomando, poi tienilo premuto per alcuni secondi. Gli eventi più recenti compaiono in alto; in questa schermata i tasti volume non cambiano il volume e nessun tasto modifica il punteggio. Usa Copia o Condividi per inviare l\'intero registro, oppure premi a lungo sul testo per selezionarne una parte.</string>
+    <string name="remote_test_copy">Copia</string>
+    <string name="remote_test_share">Condividi</string>
+    <string name="remote_test_copied">Registro copiato negli appunti.</string>
+    <string name="remote_test_nothing_to_export">Nessun evento da copiare: premi prima i tasti del telecomando.</string>
+    <string name="remote_test_share_subject">Segna Punti Padel - Test telecomando</string>
+    <string name="remote_test_export_header">Segna Punti Padel - Test telecomando\nDispositivo: %1$s %2$s\nAndroid: %3$s (API %4$d)\nEventi registrati: %5$d (mostrati: %6$d, dal più vecchio)</string>
+    <string name="remote_test_waiting">In attesa di eventi dai tasti…</string>
+    <string name="remote_test_entry">#%1$d  %2$s  %3$s (%4$d)\n\u0020\u0020\u0020\u0020ripetizione: %5$d · scan: %6$d · intervallo: %7$s\n\u0020\u0020\u0020\u0020dispositivo: %8$s (id %9$d) · esterno: %11$s%10$s</string>
+    <string name="remote_test_external_yes">sì</string>
+    <string name="remote_test_external_no">no</string>
+    <string name="remote_test_action_down">PREMUTO</string>
+    <string name="remote_test_action_up">RILASCIATO</string>
+    <string name="remote_test_action_other">ALTRO</string>
+    <string name="remote_test_interval">+%1$d ms</string>
+    <string name="remote_test_no_interval">-</string>
+    <string name="remote_test_unknown_device">sconosciuto</string>
+    <string name="remote_test_long_press">\u0020· pressione lunga</string>
 </resources>

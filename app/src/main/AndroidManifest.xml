@@ -17,6 +17,11 @@
             android:screenOrientation="landscape"
             android:windowSoftInputMode="adjustResize" />
         <activity
+            android:name=".presentation.remote.RemoteTestActivity"
+            android:configChanges="keyboard|keyboardHidden|navigation"
+            android:exported="false"
+            android:screenOrientation="landscape" />
+        <activity
             android:name=".presentation.setup.SetupActivity"
             android:exported="true"
             android:label="@string/app_name"

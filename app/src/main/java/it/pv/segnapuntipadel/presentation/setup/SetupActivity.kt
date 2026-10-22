@@ -13,6 +13,7 @@ import it.pv.segnapuntipadel.R
 import it.pv.segnapuntipadel.domain.model.MatchRules
 import it.pv.segnapuntipadel.domain.model.Team
 import it.pv.segnapuntipadel.presentation.game.GameActivity
+import it.pv.segnapuntipadel.presentation.remote.RemoteTestActivity
 
 class SetupActivity : ComponentActivity() {
     private val viewModel: SetupViewModel by viewModels()
@@ -39,6 +40,10 @@ class SetupActivity : ComponentActivity() {
             )
             teamPanel.visibility = View.GONE
             rulesPanel.visibility = View.VISIBLE
+        }
+
+        findViewById<Button>(R.id.open_remote_test).setOnClickListener {
+            startActivity(Intent(this, RemoteTestActivity::class.java))
         }
 
         findViewById<Button>(R.id.back_to_teams).setOnClickListener {

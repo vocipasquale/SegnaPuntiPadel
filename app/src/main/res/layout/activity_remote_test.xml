@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/score_background"
+    android:fitsSystemWindows="true"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/remote_test_title"
+            android:textColor="@color/yellow_led"
+            android:textSize="24sp"
+            style="@style/ScoreboardLabel"
+            android:textStyle="bold" />
+
+        <Button
+            android:id="@+id/remote_test_copy"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:backgroundTint="@color/yellow_led"
+            android:focusable="false"
+            android:textColor="@color/score_button_text"
+            style="@style/ScoreboardLabel"
+            android:text="@string/remote_test_copy" />
+
+        <Button
+            android:id="@+id/remote_test_share"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:backgroundTint="@color/yellow_led"
+            android:focusable="false"
+            android:textColor="@color/score_button_text"
+            style="@style/ScoreboardLabel"
+            android:text="@string/remote_test_share" />
+
+        <Button
+            android:id="@+id/remote_test_clear"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:backgroundTint="@color/yellow_led"
+            android:focusable="false"
+            android:textColor="@color/score_button_text"
+            style="@style/ScoreboardLabel"
+            android:text="@string/remote_test_clear" />
+
+        <Button
+            android:id="@+id/remote_test_back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/yellow_led"
+            android:focusable="false"
+            android:textColor="@color/score_button_text"
+            style="@style/ScoreboardLabel"
+            android:text="@string/back" />
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:text="@string/remote_test_instructions"
+        android:textColor="@color/score_text_muted"
+        android:textSize="14sp" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="8dp"
+        android:layout_weight="1"
+        android:background="@color/score_panel"
+        android:padding="8dp">
+
+        <TextView
+            android:id="@+id/remote_test_log"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="monospace"
+            android:textColor="@color/score_text"
+            android:textIsSelectable="true"
+            android:textSize="14sp" />
+    </ScrollView>
+</LinearLayout>

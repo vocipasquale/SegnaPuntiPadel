@@ -3,7 +3,7 @@
 Versione nativa e leggera del segnapunti per dispositivi datati
 (es. Mediacom M-MP720M, Android 4.1, 1024x600, 512 MB di RAM).
 
-- Modulo: `app-lite` (applicationId `it.pv.segnapuntipadel.lite`, versione 1.0 / versionCode 2).
+- Modulo: `app-lite` (applicationId `it.pv.segnapuntipadel.lite`, versione 1.1 / versionCode 3).
 - Android minimo: 4.1 (API 16). Tema Holo nativo, nessuna libreria AndroidX, Compose o coroutine.
 - Funziona completamente offline e **non richiede alcun permesso**.
 - Le regole di punteggio sono le stesse dell'app principale: il calcolo è eseguito dalla libreria
@@ -17,10 +17,10 @@ Versione nativa e leggera del segnapunti per dispositivi datati
    `adb install -r app-lite-debug.apk`.
 3. Sul tablet abilitare *Impostazioni → Sicurezza → Origini sconosciute* e aprire il file APK.
 
-La versione 1.0 (versionCode 2) ha lo stesso applicationId e va firmata con la **stessa chiave**
-(debug) della versione di prova "Hello World": si installa quindi sopra la precedente come
-aggiornamento, senza disinstallare. Se la firma è diversa Android rifiuta l'aggiornamento: in quel
-caso disinstallare prima la versione di prova.
+La versione 1.1 (versionCode 3) ha lo stesso applicationId e va firmata con la **stessa chiave**
+(debug) delle versioni precedenti: si installa quindi sopra come aggiornamento, senza
+disinstallare. Se la firma è diversa Android rifiuta l'aggiornamento: in quel caso disinstallare
+prima la versione precedente.
 
 ## Utilizzo
 
@@ -53,6 +53,21 @@ caso disinstallare prima la versione di prova.
   Un tocco sul tabellone a partita terminata riapre il riquadro.
 - Il tasto Indietro dal tabellone torna all'impostazione; se la partita è in corso chiede prima conferma,
   perché il punteggio andrebbe perso.
+
+### Telecomando Bluetooth (es. AB Shutter3)
+
+- Accoppiare il telecomando dalle impostazioni Bluetooth di Android; l'app non richiede permessi.
+- Sul tabellone: tasto **VOLUME_UP** = punto alla **Squadra A**, tasto **VOLUME_DOWN** = punto
+  alla **Squadra B**. Si comporta come il tocco sul pannello (il primo comando sceglie il servizio).
+- **Un punto per pressione**: tenendo premuto un tasto le ripetizioni sono ignorate; per un nuovo
+  punto bisogna rilasciare e premere di nuovo.
+- La pressione lunga sul telecomando **non** corregge: la correzione resta la pressione lunga sullo schermo.
+- Solo i dispositivi esterni assegnano punti: i tasti volume del tablet continuano a regolare il volume.
+  Su Android precedenti al 10 il riconoscimento usa un metodo di sistema nascosto; se non fosse
+  leggibile, ogni tasto volume fisico verrebbe trattato come telecomando (errore nel log `SegnaPuntiLite`).
+- Nella schermata di impostazione i tasti del telecomando non hanno effetto sul punteggio.
+- Codici e ripetizioni dei tasti sono stati rilevati sul Samsung A22 (Android 13) con il
+  Test telecomando dell'app principale; sullo SmartPad accoppiamento e ricezione dei tasti vanno provati.
 
 ## Dati della partita (solo memoria di sessione)
 
