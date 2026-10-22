@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/score_background"
+    android:fitsSystemWindows="true"
+    android:orientation="vertical"
+    android:padding="6dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:orientation="horizontal">
+
+        <it.pv.segnapuntipadel.lite.FitTextView
+            android:id="@+id/set_label"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="left|center_vertical"
+            android:maxLines="1"
+            android:textColor="@color/score_text"
+            android:textSize="30sp"
+            android:textStyle="bold" />
+
+        <it.pv.segnapuntipadel.lite.FitTextView
+            android:id="@+id/match_timer"
+            style="@style/ScoreboardDigits"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:textColor="@color/yellow_led"
+            android:textSize="52sp" />
+
+        <it.pv.segnapuntipadel.lite.FitTextView
+            android:id="@+id/status_hint"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="right|center_vertical"
+            android:maxLines="1"
+            android:textColor="@color/yellow_led"
+            android:textSize="24sp" />
+    </LinearLayout>
+
+    <HorizontalScrollView
+        android:id="@+id/set_history_scroll"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fillViewport="true"
+        android:scrollbars="none">
+
+        <TextView
+            android:id="@+id/set_history"
+            style="@style/ScoreboardDigits"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:paddingBottom="2dp"
+            android:paddingTop="2dp"
+            android:textColor="@color/score_text_muted"
+            android:textSize="28sp" />
+    </HorizontalScrollView>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="4dp"
+        android:layout_weight="1"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:id="@+id/panel_a"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:layout_marginRight="4dp"
+            android:background="@drawable/score_panel_a"
+            android:orientation="vertical"
+            android:padding="6dp">
+
+            <it.pv.segnapuntipadel.lite.FitTextView
+                android:id="@+id/team_a_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:gravity="center"
+                android:maxLines="1"
+                android:textColor="@color/score_led_a"
+                android:textSize="30sp"
+                android:textStyle="bold" />
+
+            <it.pv.segnapuntipadel.lite.FitTextView
+                android:id="@+id/team_a_points"
+                style="@style/ScoreboardDigits"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:textColor="@color/score_led_a"
+                android:textSize="400sp" />
+
+            <View
+                android:id="@+id/team_a_serving_indicator"
+                android:layout_width="match_parent"
+                android:layout_height="20dp"
+                android:background="@color/score_led_a"
+                android:visibility="invisible" />
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/panel_b"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:layout_marginLeft="4dp"
+            android:background="@drawable/score_panel_b"
+            android:orientation="vertical"
+            android:padding="6dp">
+
+            <it.pv.segnapuntipadel.lite.FitTextView
+                android:id="@+id/team_b_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:gravity="center"
+                android:maxLines="1"
+                android:textColor="@color/score_led_b"
+                android:textSize="30sp"
+                android:textStyle="bold" />
+
+            <it.pv.segnapuntipadel.lite.FitTextView
+                android:id="@+id/team_b_points"
+                style="@style/ScoreboardDigits"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:textColor="@color/score_led_b"
+                android:textSize="400sp" />
+
+            <View
+                android:id="@+id/team_b_serving_indicator"
+                android:layout_width="match_parent"
+                android:layout_height="20dp"
+                android:background="@color/score_led_b"
+                android:visibility="invisible" />
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>
