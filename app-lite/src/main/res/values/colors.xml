@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="score_background">#FF000000</color>
+    <color name="score_panel">#FF11171A</color>
+    <color name="score_panel_pressed">#FF2A363C</color>
+    <color name="score_panel_disabled">#FF080B0D</color>
+    <color name="score_text">#FFFFFFFF</color>
+    <color name="score_text_muted">#FFB8C4C9</color>
+    <color name="score_led_a">#FF44D93F</color>
+    <color name="score_led_b">#FFFC4130</color>
+    <color name="yellow_led">#FFF0FC08</color>
+</resources>

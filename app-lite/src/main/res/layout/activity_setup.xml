@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/score_background"
+    android:fillViewport="true"
+    android:fitsSystemWindows="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="@string/setup_title"
+            android:textColor="@color/yellow_led"
+            android:textSize="26sp"
+            android:textStyle="bold" />
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:baselineAligned="false"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="8dp"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/team_a"
+                    android:textColor="@color/score_led_a"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+
+                <EditText
+                    android:id="@+id/player_a1"
+                    style="@style/SetupNameField"
+                    android:hint="@string/player_a1" />
+
+                <EditText
+                    android:id="@+id/player_a2"
+                    style="@style/SetupNameField"
+                    android:hint="@string/player_a2" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="8dp"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/team_b"
+                    android:textColor="@color/score_led_b"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+
+                <EditText
+                    android:id="@+id/player_b1"
+                    style="@style/SetupNameField"
+                    android:hint="@string/player_b1" />
+
+                <EditText
+                    android:id="@+id/player_b2"
+                    style="@style/SetupNameField"
+                    android:hint="@string/player_b2" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:text="@string/match_rules_title"
+            android:textColor="@color/yellow_led"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:baselineAligned="false"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="8dp"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <TextView
+                    style="@style/SetupLabel"
+                    android:text="@string/sets_to_play" />
+
+                <EditText
+                    android:id="@+id/sets_to_play"
+                    style="@style/SetupNumberField" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="8dp"
+                android:layout_marginRight="8dp"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <TextView
+                    style="@style/SetupLabel"
+                    android:text="@string/max_games_per_set" />
+
+                <EditText
+                    android:id="@+id/max_games_per_set"
+                    style="@style/SetupNumberField" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="8dp"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <TextView
+                    style="@style/SetupLabel"
+                    android:text="@string/max_deuce_cycles" />
+
+                <EditText
+                    android:id="@+id/max_deuce_cycles"
+                    style="@style/SetupNumberField"
+                    android:imeOptions="flagNoExtractUi|actionDone" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/start_new_match"
+            style="@style/SetupButton"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="16dp"
+            android:text="@string/start_new_match" />
+    </LinearLayout>
+</ScrollView>
