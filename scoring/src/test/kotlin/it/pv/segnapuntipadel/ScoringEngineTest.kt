@@ -8,6 +8,7 @@ import it.pv.segnapuntipadel.domain.model.Score
 import it.pv.segnapuntipadel.domain.model.Team
 import it.pv.segnapuntipadel.domain.model.TeamSide
 import it.pv.segnapuntipadel.domain.scoring.ScoringEngine
+import it.pv.segnapuntipadel.domain.usecase.ApplyMatchAction
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertFalse
 import org.junit.Assert.assertNull
@@ -113,6 +114,70 @@ class ScoringEngineTest {
 
         assertTrue(state.isFinished)
         assertNull(state.winner)
+    }
+
+    @Test
+    fun finishedMatchIgnoresFurtherPoints() {
+        val finished = winSet(newState(MatchRules(setsToPlay = 1)), TeamSide.A)
+
+        assertEquals(finished, engine.apply(finished, MatchAction.ScorePoint(TeamSide.B)))
+    }
+
+    @Test
+    fun advantageWinnerClosesGameAndResetsDeuceState() {
+        var state = score(score(newState(), TeamSide.A, 3), TeamSide.B, 3)
+        state = score(state, TeamSide.A, 2)
+
+        assertEquals(Score(1, 0), state.games)
+        assertEquals(Score(), state.gameScore.points)
+        assertNull(state.gameScore.advantage)
+        assertEquals(0, state.gameScore.completedDeuceCycles)
+        assertFalse(state.gameScore.killerPoint)
+    }
+
+    @Test
+    fun killerPointWaitsForConfiguredNumberOfDeuceCycles() {
+        var state = score(
+            score(newState(MatchRules(maxDeuceCycles = 2)), TeamSide.A, 3),
+            TeamSide.B, 3
+        )
+        state = score(score(state, TeamSide.A), TeamSide.B)
+        assertFalse(state.gameScore.killerPoint)
+        assertEquals(1, state.gameScore.completedDeuceCycles)
+
+        state = score(score(state, TeamSide.B), TeamSide.A)
+        assertTrue(state.gameScore.killerPoint)
+        assertEquals(2, state.gameScore.completedDeuceCycles)
+    }
+
+    @Test
+    fun replayWithoutLastWinningPointReopensFinishedMatch() {
+        val initial = unstartedState(MatchRules(setsToPlay = 1))
+        val actions = List(25) { MatchAction.ScorePoint(TeamSide.A) }
+        val useCase = ApplyMatchAction()
+        assertTrue(useCase.replay(initial, actions).isFinished)
+
+        val corrected = useCase.replay(initial, actions.dropLast(1))
+
+        assertFalse(corrected.isFinished)
+        assertEquals(Score(5, 0), corrected.games)
+        assertEquals(Score(3, 0), corrected.gameScore.points)
+        assertEquals(TeamSide.B, corrected.servingSide)
+        assertTrue(corrected.completedSets.isEmpty())
+    }
+
+    @Test
+    fun replayPreservesInitialServingSelectionWhenPointIsRemoved() {
+        val initial = unstartedState()
+        val actions = listOf(
+            MatchAction.ScorePoint(TeamSide.B),
+            MatchAction.ScorePoint(TeamSide.A),
+            MatchAction.ScorePoint(TeamSide.B)
+        )
+        val corrected = ApplyMatchAction().replay(initial, listOf(actions[0], actions[2]))
+
+        assertEquals(TeamSide.B, corrected.servingSide)
+        assertEquals(Score(0, 1), corrected.gameScore.points)
     }
 
     private fun unstartedState(rules: MatchRules = MatchRules()): MatchState =

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="LiteTheme" parent="@android:style/Theme.Holo.NoActionBar.Fullscreen">
+        <item name="android:windowBackground">@color/score_background</item>
+        <item name="android:textColorPrimary">@color/score_text</item>
+        <item name="android:textColorSecondary">@color/score_text_muted</item>
+    </style>
+
+    <style name="ScoreboardDigits">
+        <item name="android:fontFamily">monospace</item>
+        <item name="android:includeFontPadding">false</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:maxLines">1</item>
+    </style>
+
+    <style name="SetupLabel">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@color/score_text_muted</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:minLines">2</item>
+    </style>
+
+    <style name="SetupNameField">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:minHeight">48dp</item>
+        <item name="android:textSize">20sp</item>
+        <item name="android:inputType">textPersonName|textCapWords</item>
+        <item name="android:imeOptions">flagNoExtractUi|actionNext</item>
+    </style>
+
+    <style name="SetupNumberField">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:minHeight">48dp</item>
+        <item name="android:textSize">22sp</item>
+        <item name="android:inputType">number</item>
+        <item name="android:imeOptions">flagNoExtractUi|actionNext</item>
+    </style>
+
+    <style name="SetupButton">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:minHeight">56dp</item>
+        <item name="android:minWidth">200dp</item>
+        <item name="android:textSize">20sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+</resources>

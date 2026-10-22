@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Segna Punti Padel Lite</string>
+    <string name="setup_title">Imposta la partita</string>
+    <string name="team_a">Squadra A</string>
+    <string name="team_b">Squadra B</string>
+    <string name="player_a1">Giocatore A1</string>
+    <string name="player_a2">Giocatore A2</string>
+    <string name="player_b1">Giocatore B1</string>
+    <string name="player_b2">Giocatore B2</string>
+    <string name="match_rules_title">Regole della partita</string>
+    <string name="sets_to_play">Numero di set da giocare</string>
+    <string name="max_games_per_set">Numero massimo di game per set</string>
+    <string name="max_deuce_cycles">Vantaggi pari prima del killer point</string>
+    <string name="start_new_match">Avvia nuova partita</string>
+    <string name="audio_unavailable">Segnali acustici non disponibili su questo dispositivo.</string>
+    <string name="restore_failed">Impossibile ripristinare la partita: %1$s</string>
+    <string name="leave_title">Abbandonare la partita?</string>
+    <string name="leave_message">La partita in corso non è salvata: tornando all\'impostazione il punteggio andrà perso.</string>
+    <string name="leave_confirm">Abbandona</string>
+    <string name="cancel">Annulla</string>
+    <string name="invalid_number">Inserisci un numero valido in tutti i campi.</string>
+    <string name="invalid_max_games">Il limite dei game per set deve essere almeno 6.</string>
+    <string name="invalid_positive_values">I valori devono essere maggiori di zero.</string>
+    <string name="set_label">Set %1$d di %2$d</string>
+    <string name="choose_service">Tocca la squadra al servizio</string>
+    <string name="match_over_hint">Partita terminata · tocca per il riepilogo</string>
+    <string name="finish_dialog_hint">Per correggere il punteggio chiudi questo riquadro (tasto Indietro o tocco fuori) e premi a lungo sulla squadra. Tocca il tabellone per riaprirlo.</string>
+    <string name="score_label">%1$s. Premi a lungo per correggere l\'ultimo punto.</string>
+    <string name="deuce_count">Parità raggiunte: %1$d</string>
+    <string name="killer_point">k</string>
+    <string name="set_won">Set %1$d vinto da %2$s</string>
+    <string name="match_won">Partita vinta da %1$s</string>
+    <string name="match_draw">Partita terminata in parità</string>
+    <string name="new_match">Nuova partita</string>
+    <string name="new_configuration">Nuova configurazione</string>
+    <string name="exit">Esci</string>
+    <string name="point_corrected">Ultimo punto di %1$s corretto.</string>
+    <string name="no_point_to_correct">Non ci sono punti di %1$s da correggere.</string>
+</resources>
